@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee" version="6.1">
+  <display-name>LearnWise</display-name>
+  <listener><listener-class>com.learnwise.servlet.AppContextListener</listener-class></listener>
+  <filter><filter-name>requestId</filter-name><filter-class>com.learnwise.servlet.RequestIdFilter</filter-class></filter>
+  <filter-mapping><filter-name>requestId</filter-name><url-pattern>/api/*</url-pattern></filter-mapping>
+  <filter><filter-name>cors</filter-name><filter-class>com.learnwise.servlet.CorsFilter</filter-class></filter>
+  <filter-mapping><filter-name>cors</filter-name><url-pattern>/api/*</url-pattern></filter-mapping>
+  <filter><filter-name>auth</filter-name><filter-class>com.learnwise.servlet.AuthFilter</filter-class></filter>
+  <filter-mapping><filter-name>auth</filter-name><url-pattern>/api/v1/*</url-pattern></filter-mapping>
+  <servlet><servlet-name>health</servlet-name><servlet-class>com.learnwise.servlet.HealthServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>health</servlet-name><url-pattern>/api/v1/health</url-pattern></servlet-mapping>
+  <servlet><servlet-name>courses</servlet-name><servlet-class>com.learnwise.servlet.CourseServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>courses</servlet-name><url-pattern>/api/v1/courses</url-pattern></servlet-mapping>
+  <servlet><servlet-name>auth</servlet-name><servlet-class>com.learnwise.servlet.AuthServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>auth</servlet-name><url-pattern>/api/v1/auth/*</url-pattern></servlet-mapping>
+  <servlet><servlet-name>profile</servlet-name><servlet-class>com.learnwise.servlet.ProfileServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>profile</servlet-name><url-pattern>/api/v1/profile</url-pattern></servlet-mapping>
+  <servlet><servlet-name>quizzes</servlet-name><servlet-class>com.learnwise.servlet.QuizServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>quizzes</servlet-name><url-pattern>/api/v1/quizzes/*</url-pattern></servlet-mapping>
+  <servlet><servlet-name>documents</servlet-name><servlet-class>com.learnwise.servlet.DocumentServlet</servlet-class><multipart-config><max-file-size>10485760</max-file-size><max-request-size>10485760</max-request-size></multipart-config></servlet>
+  <servlet-mapping><servlet-name>documents</servlet-name><url-pattern>/api/v1/documents/*</url-pattern></servlet-mapping>
+  <servlet><servlet-name>tutor</servlet-name><servlet-class>com.learnwise.servlet.TutorServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>tutor</servlet-name><url-pattern>/api/v1/tutor</url-pattern></servlet-mapping>
+</web-app>
