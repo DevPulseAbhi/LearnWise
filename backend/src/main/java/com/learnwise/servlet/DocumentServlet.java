@@ -1,4 +1,4 @@
-dfkdjfjjjjjjfkejejjkjfkjdbnpackage com.learnwise.servlet;
+package com.learnwise.servlet;
 
 import com.learnwise.services.AuthService;
 import com.learnwise.services.DocumentService;

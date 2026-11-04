@@ -2,11 +2,11 @@ import type { ButtonHTMLAttributes, InputHTMLAttributes, ReactNode, SelectHTMLAt
 import { Icon, type IconName } from './Icon'
 
 export function Button({ children, variant = 'primary', icon, ...props }: ButtonHTMLAttributes<HTMLButtonElement> & { variant?: 'primary' | 'secondary' | 'ghost' | 'soft'; icon?: IconName }) {
-  return <button className={`button button-${variant}`} {...props}>{icon && <Icon name={icon} size={16} />}{children}</button>
+  return <button type="button" className={`button button-${variant}`} {...props}>{icon && <Icon name={icon} size={16} />}{children}</button>
 }
 
-export function Card({ children, className = '', inset = false }: { children: ReactNode; className?: string; inset?: boolean }) {
-  return <section className={`card ${inset ? 'card-inset' : ''} ${className}`}>{children}</section>
+export function Card({ children, className = '', inset = false, id }: { children: ReactNode; className?: string; inset?: boolean; id?: string }) {
+  return <section id={id} className={`card ${inset ? 'card-inset' : ''} ${className}`}>{children}</section>
 }
 
 export function Badge({ children, tone = 'neutral' }: { children: ReactNode; tone?: 'neutral' | 'sage' | 'blue' | 'peach' | 'lavender' }) {

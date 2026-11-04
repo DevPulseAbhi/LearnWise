@@ -40,6 +40,8 @@ public final class AppContextListener implements ServletContextListener {
         var documentService = new com.learnwise.services.DocumentService(persistence.sessionFactory(), documentConfig);
         event.getServletContext().setAttribute(com.learnwise.services.DocumentService.class.getName(), documentService);
         event.getServletContext().setAttribute(com.learnwise.services.AiTutorService.class.getName(), new com.learnwise.services.AiTutorService(documentService));
+        event.getServletContext().setAttribute(com.learnwise.services.PlanningService.class.getName(), new com.learnwise.services.PlanningService(persistence.sessionFactory()));
+        event.getServletContext().setAttribute(com.learnwise.services.AnalyticsService.class.getName(), new com.learnwise.services.AnalyticsService(persistence.sessionFactory()));
         var services = new Services(
                 new CourseService(persistence.sessionFactory(), new CourseRepository()),
                 new JdbcHealthRepository(persistence.dataSource()));

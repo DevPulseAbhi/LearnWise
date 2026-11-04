@@ -137,6 +137,12 @@ em {
   transform: translateY(-2px);
 }
 
+.button:disabled {
+  cursor: not-allowed;
+  opacity: .58;
+  transform: none;
+}
+
 .button-primary {
   background: var(--ink);
   color: white;
@@ -770,7 +776,7 @@ em {
   text-align: left;
 }
 
-.topic span {
+.topic>span:first-child {
   display: grid;
   place-items: center;
   width: 32px;
@@ -778,6 +784,18 @@ em {
   color: var(--sage-dark);
   background: var(--sage-light);
   border-radius: 9px;
+}
+
+.topic>span:nth-child(2) {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.topic>span:nth-child(2) small {
+  color: var(--muted);
+  font-size: .68rem;
+  font-weight: 400;
 }
 
 .topic-1 span {
@@ -1070,6 +1088,13 @@ select {
   background: white;
   box-shadow: var(--shadow-small);
   font-weight: 700;
+}
+
+.filter-pills button:focus-visible,
+.explore-tabs button:focus-visible,
+.topic:focus-visible {
+  outline: 3px solid rgba(136, 169, 154, .5);
+  outline-offset: 2px;
 }
 
 .library-grid {
@@ -1877,6 +1902,12 @@ textarea {
     flex-direction: column;
   }
 
+  .page-header>.field,
+  .page-header>.button,
+  .page-header>a {
+    width: 100%;
+  }
+
   .dashboard-grid,
   .course-grid,
   .planner-layout,
@@ -1898,6 +1929,11 @@ textarea {
 
   .explore-feature {
     padding: 30px;
+  }
+
+  .explore-tabs {
+    gap: 18px;
+    overflow-x: auto;
   }
 
   .feature-illustration {

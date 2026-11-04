@@ -13,6 +13,8 @@ import com.learnwise.entities.TopicMastery;
 import com.learnwise.entities.LearningHistory;
 import com.learnwise.entities.StudyDocument;
 import com.learnwise.entities.DocumentChunk;
+import com.learnwise.entities.StudyPlan;
+import com.learnwise.entities.StudyTask;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.flywaydb.core.Flyway;
@@ -55,7 +57,8 @@ public final class PersistenceManager implements AutoCloseable {
                 .addAnnotatedClass(QuestionOption.class).addAnnotatedClass(QuizAttempt.class)
                 .addAnnotatedClass(AnswerRecord.class).addAnnotatedClass(TopicMastery.class)
                 .addAnnotatedClass(LearningHistory.class).addAnnotatedClass(StudyDocument.class)
-                .addAnnotatedClass(DocumentChunk.class);
+                .addAnnotatedClass(DocumentChunk.class).addAnnotatedClass(StudyPlan.class)
+                .addAnnotatedClass(StudyTask.class);
         this.sessionFactory = hibernate.buildSessionFactory();
     }
 

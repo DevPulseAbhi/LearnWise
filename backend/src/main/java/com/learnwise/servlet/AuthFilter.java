@@ -15,7 +15,7 @@ public final class AuthFilter implements Filter {
         var path = httpRequest.getRequestURI();
         var current = auth.authenticate(AuthCookies.value(httpRequest, AuthService.SESSION_COOKIE));
         if (current != null) request.setAttribute(AUTHENTICATED, current);
-        var protectedRoute = path.endsWith("/auth/me") || path.endsWith("/auth/csrf") || path.endsWith("/profile") || path.contains("/quizzes") || path.contains("/documents") || path.contains("/tutor") || ("POST".equals(httpRequest.getMethod()) && path.endsWith("/courses"));
+        var protectedRoute = path.endsWith("/auth/me") || path.endsWith("/auth/csrf") || path.endsWith("/profile") || path.contains("/quizzes") || path.contains("/documents") || path.contains("/tutor") || path.contains("/planning") || path.contains("/analytics") || path.contains("/knowledge-map") || ("POST".equals(httpRequest.getMethod()) && path.endsWith("/courses"));
         if (protectedRoute && current == null) {
             JsonSupport.write((HttpServletResponse) response, 401, new com.learnwise.dto.ErrorResponse("UNAUTHENTICATED", "Sign in is required", Instant.now(), String.valueOf(request.getAttribute("requestId"))));
             return;

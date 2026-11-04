@@ -87,6 +87,22 @@ PDF files are stored outside the web root under `LEARNWISE_DOCUMENT_STORAGE_PATH
 
 The local filesystem adapter is suitable for development. Production should replace it with an object-storage adapter and configure a server-side provider adapter, timeout, retry, rate-limit, and per-user budget policy before enabling live AI.
 
+## Phase 6 planning and analytics
+
+Authenticated endpoints are available under `/api/v1/planning`:
+
+- `GET /` lists the signed-in user's plans and tasks.
+- `POST /` creates a plan from a goal, deadline, daily minutes, and topic IDs.
+- `POST /tasks/{id}` accepts `complete` or `postpone` (with a future `dueAt`).
+- `GET /analytics` returns persisted quiz accuracy, overdue tasks, and topic mastery evidence.
+- `GET /knowledge-map` returns persisted topics and prerequisite edges.
+
+Task generation is deterministic: mastery below 60% selects `PRACTICE`, below 80%
+selects `REVIEW`, and otherwise selects `REVISION`. Fewer than three answers is
+reported as insufficient evidence; mastery is not a scientifically validated
+retention guarantee. Completed tasks are not changed by later planning operations.
+All ownership is derived from the authenticated session user.
+
 ## Tests
 
 `mvn test` uses H2 in MySQL compatibility mode for repository/transaction tests. A real MySQL integration test is opt-in via `-Pintegration` and `LEARNWISE_IT_DB_URL`, `LEARNWISE_IT_DB_USER`, and `LEARNWISE_IT_DB_PASSWORD`; it is not silently replaced by an in-memory database.

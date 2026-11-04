@@ -22,4 +22,6 @@
   <servlet-mapping><servlet-name>documents</servlet-name><url-pattern>/api/v1/documents/*</url-pattern></servlet-mapping>
   <servlet><servlet-name>tutor</servlet-name><servlet-class>com.learnwise.servlet.TutorServlet</servlet-class></servlet>
   <servlet-mapping><servlet-name>tutor</servlet-name><url-pattern>/api/v1/tutor</url-pattern></servlet-mapping>
+  <servlet><servlet-name>planning</servlet-name><servlet-class>com.learnwise.servlet.PlanningServlet</servlet-class></servlet>
+  <servlet-mapping><servlet-name>planning</servlet-name><url-pattern>/api/v1/planning/*</url-pattern></servlet-mapping>
 </web-app>
